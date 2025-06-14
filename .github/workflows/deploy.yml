@@ -25,33 +25,6 @@ jobs:
           username: ubuntu
           key: |
             -----BEGIN OPENSSH PRIVATE KEY-----
-name: Deploy to EC2
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Print working directory and files
-        run: |
-          pwd
-          ls -al
-
-      - name: Deploy files via SCP
-        uses: appleboy/scp-action@v0.1.3
-        with:
-          host: 3.133.152.101
-          username: ubuntu
-          key: |
-            -----BEGIN OPENSSH PRIVATE KEY-----
             b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAACFwAAAAdzc2gtcn
             NhAAAAAwEAAQAAAgEArzN3je4tCC5yb8DIA0IZYHP5gGFkA3xIylr69nFYnyrA51AieE/p
             xcfFXijwXtNfTtKKYPsoFehEATCtdzrWyl1IDQMP6eUHU2OSom53ohq9Jd3pgMjrZFg2r+
