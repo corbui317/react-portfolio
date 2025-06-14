@@ -79,11 +79,3 @@ jobs:
           strip_components: 0
           debug: true
           overwrite: true
-
-            -----END OPENSSH PRIVATE KEY-----
-          port: 22
-          source: "index.html,style.css,main.js"
-          target: "/var/www/html"
-          strip_components: 0
-          debug: true
-          overwrite: true
