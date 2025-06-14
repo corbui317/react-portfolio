@@ -28,3 +28,5 @@ jobs:
           source: "index.html,style.css,main.js"
           target: "/var/www/html"
           strip_components: 0
+          debug: true
+          overwrite: true
