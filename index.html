@@ -1,65 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Corey Bui | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <div class="header-buttons">
-      <button class="menu-button" onclick="toggleMenu()">☰</button>
-      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</button>
-    </div>
-    <div class="logo">Corey Bui</div>
-    <div class="menu" id="menu">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Corey Bui | Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-buttons">
+        <button class="menu-button" onclick="toggleMenu()">☰</button>
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+          🌙
+        </button>
+      </div>
+      <div class="logo">Corey Bui</div>
+      <div class="menu" id="menu">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </header>
 
-  <section class="intro-section">
-    <h1><span id="typewriter"></span></h1>
-    <p>I build modern web experiences and automation tools that bridge backend infrastructure with engaging frontends.</p>
-  </section>
-
-  <section class="section fade-in" id="about">
-    <div class="content-box">
-      <h2>About Me</h2>
+    <section class="intro-section">
+      <h1><span id="typewriter"></span></h1>
       <p>
-        I'm a systems engineer and web developer with a passion for simplifying complexity. My toolkit includes Docker, Linux, React, Node.js, and cloud technologies like AWS.
-        <br/><br/>
-        Outside of tech, I love watching movies, cooking, playing music (piano, guitar, trumpet), and tinkering with servers just for fun.
+        I build modern web experiences and automation tools that bridge backend
+        infrastructure with engaging frontends.
       </p>
-    </div>
-  </section>
+    </section>
 
-  <section class="section fade-in" id="projects">
-    <div class="content-box">
-      <h2>Projects</h2>
-      <p>
-        I created "HomeVault," a private media archive for organizing home videos and photos. Built with Docker, Nginx, Node.js, React, and MongoDB, it runs on EC2 with CI/CD via GitHub Actions and DNS via Route 53.
-      </p>
-    </div>
-  </section>
+    <section class="section fade-in" id="about">
+      <div class="content-box">
+        <h2>About Me</h2>
+        <p>
+          I'm a systems engineer and web developer with a passion for
+          simplifying complexity. My toolkit includes Docker, Linux, React,
+          Node.js, and cloud technologies like AWS.
+          <br /><br />
+          Outside of tech, I love watching movies, cooking, playing music
+          (piano, guitar, trumpet), and tinkering with servers just for fun.
+        </p>
+      </div>
+    </section>
 
-  <section class="section fade-in" id="contact">
-    <div class="content-box">
-      <h2>Contact</h2>
-      <p>
-        Want to collaborate or say hi?<br />
-        Email: <a href="mailto:corbui317@gmail.com">corbui317@gmail.comm</a>
-      </p>
-    </div>
-  </section>
+    <section class="section fade-in" id="projects">
+      <div class="content-box">
+        <h2>Projects</h2>
+        <p>
+          I created "HomeVault," a private media archive for organizing home
+          videos and photos. Built with Docker, Nginx, Node.js, React, and
+          MongoDB, it runs on EC2 with CI/CD via GitHub Actions and DNS via
+          Route 53.
+        </p>
+      </div>
+    </section>
 
-  <footer>
-    &copy; 2025 Corey Bui — Built with HTML, CSS & ❤️
-  </footer>
+    <section class="section fade-in" id="contact">
+      <div class="content-box">
+        <h2>Contact</h2>
+        <p>
+          Want to collaborate or say hi?<br />
+          Email: <a href="mailto:corbui317@gmail.com">corbui317@gmail.com</a>
+        </p>
+      </div>
+    </section>
 
-  <script src="main.js"></script>
-</body>
+    <footer>&copy; 2025 Corey Bui — Built with HTML, CSS & ❤️</footer>
+
+    <script src="main.js"></script>
+  </body>
 </html>
