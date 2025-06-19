@@ -69,7 +69,7 @@ function App() {
     });
 
     faders.forEach((fader) => observer.observe(fader));
-  }, []);
+  }, [];
 
   return (
     <>
