@@ -23,7 +23,7 @@ function App() {
     document.body.classList.toggle("light-mode", theme === "light");
     localStorage.setItem("theme", theme);
   }, [theme]);
-
+  useEffect(() => {
     // Typewriter Effect
     const typeText = [
       "Hey, I'm Corey.",
@@ -69,7 +69,7 @@ function App() {
     });
 
     faders.forEach((fader) => observer.observe(fader));
-  }, [];
+  }, []);
 
   return (
     <>
