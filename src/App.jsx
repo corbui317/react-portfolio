@@ -75,10 +75,18 @@ function App() {
     <>
       <header>
         <div className="header-buttons">
-          <button className="menu-button" onClick={toggleMenu}>
+          <button
+            className="menu-button"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
             ☰
           </button>
-          <button className="theme-toggle" onClick={toggleTheme}>
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+          >
             {theme === "light" ? "☀️" : "🌙"}
           </button>
         </div>
