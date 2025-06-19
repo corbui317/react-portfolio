@@ -1,45 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 
 function App() {
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved) return saved;
+    const hour = new Date().getHours();
+    return hour >= 7 && hour < 19 ? "light" : "dark";
+  });
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
+
   useEffect(() => {
-    // Theme Setup
-    const setTheme = (mode) => {
-      document.body.classList.toggle("light-mode", mode === "light");
-      localStorage.setItem("theme", mode);
-      const toggleButton = document.getElementById("themeToggle");
-      if (toggleButton) {
-        toggleButton.textContent = mode === "light" ? "☀️" : "🌙";
-      }
-    };
-
-    const toggleTheme = () => {
-      const currentMode = document.body.classList.contains("light-mode")
-        ? "light"
-        : "dark";
-      const nextMode = currentMode === "light" ? "dark" : "light";
-      setTheme(nextMode);
-    };
-
-    const toggleMenu = () => {
-      const menu = document.getElementById("menu");
-      if (menu) {
-        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-      }
-    };
-
-    window.toggleTheme = toggleTheme;
-    window.toggleMenu = toggleMenu;
-
-    // Init Theme
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      const hour = new Date().getHours();
-      const defaultTheme = hour >= 7 && hour < 19 ? "light" : "dark";
-      setTheme(defaultTheme);
-    }
+    document.body.classList.toggle("light-mode", theme === "light");
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
     // Typewriter Effect
     const typeText = [
@@ -92,15 +75,15 @@ function App() {
     <>
       <header>
         <div className="header-buttons">
-          <button className="menu-button" onClick={() => window.toggleMenu()}>
+          <button className="menu-button" onClick={toggleMenu}>
             ☰
           </button>
-          <button className="theme-toggle" id="themeToggle" onClick={() => window.toggleTheme()}>
-            🌙
+          <button className="theme-toggle" onClick={toggleTheme}>
+            {theme === "light" ? "☀️" : "🌙"}
           </button>
         </div>
         <div className="logo">Corey Bui</div>
-        <div className="menu" id="menu">
+        <div className={`menu${menuOpen ? " open" : ""}`}>
           <a href="#about">About</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
