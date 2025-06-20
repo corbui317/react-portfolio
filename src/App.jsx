@@ -15,22 +15,19 @@ function App() {
       title: "HomeVault",
       description:
         "A private media archive built with Docker, Nginx, Node.js, React and MongoDB. Runs on EC2 with CI/CD via GitHub Actions and DNS via Route 53.",
-      image:
-        "https://images.unsplash.com/photo-1527694224012-b644f3fcb692?auto=format&fit=crop&w=1050&q=80",
+      url: "https://example.com/homevault",
     },
     {
       title: "TaskFlow",
       description:
         "A lightweight workflow manager for automating daily tasks using Node.js and React.",
-      image:
-        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1050&q=80",
+      url: "https://example.com/taskflow",
     },
     {
       title: "Portfolio Site",
       description:
         "This website! A responsive portfolio built with React and deployed with modern DevOps practices.",
-      image:
-        "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=1050&q=80",
+      url: "https://coreybui.com",
     },
   ];
   const [projectIndex, setProjectIndex] = useState(0);
@@ -39,7 +36,7 @@ function App() {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
-    const nextProject = () =>
+  const nextProject = () =>
     setProjectIndex((idx) => (idx + 1) % projects.length);
   const prevProject = () =>
     setProjectIndex((idx) => (idx - 1 + projects.length) % projects.length);
@@ -155,16 +152,38 @@ function App() {
       <section className="section fade-in" id="projects">
         <div
           className="carousel"
-          style={{ backgroundImage: `url(${projects[projectIndex].image})` }}
+          role="button"
+          tabIndex={0}
+          onClick={() => window.open(projects[projectIndex].url, "_blank")}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") window.open(projects[projectIndex].url, "_blank");
+          }}
         >
+          <iframe
+            src={projects[projectIndex].url}
+            title={projects[projectIndex].title}
+            className="carousel-preview"
+          ></iframe>
           <div className="carousel-content">
             <h2>{projects[projectIndex].title}</h2>
             <p>{projects[projectIndex].description}</p>
           </div>
-          <button className="carousel-control prev" onClick={prevProject}>
+          <button
+            className="carousel-control prev"
+            onClick={(e) => {
+              e.stopPropagation();
+              prevProject();
+            }}
+          >
             ❮
           </button>
-          <button className="carousel-control next" onClick={nextProject}>
+          <button
+            className="carousel-control next"
+            onClick={(e) => {
+              e.stopPropagation();
+              nextProject();
+            }}
+          >
             ❯
           </button>
         </div>
