@@ -273,3 +273,60 @@ body:not(.light-mode) .content-box {
     padding: 0.5rem;
   }
 }
+
+/* Carousel Styles */
+.carousel {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  padding: 6rem 2rem;
+  border-radius: 12px;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.carousel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.7);
+  border-radius: 12px;
+}
+
+.carousel-content {
+  position: relative;
+  z-index: 1;
+  max-width: 80%;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.carousel-control.prev {
+  left: 1rem;
+}
+
+.carousel-control.next {
+  right: 1rem;
+}
+
+/* Dark mode email link */
+body:not(.light-mode) .email-link {
+  color: #8ab4f8;
+}

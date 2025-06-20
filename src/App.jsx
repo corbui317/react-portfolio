@@ -10,10 +10,39 @@ function App() {
   });
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const projects = [
+    {
+      title: "HomeVault",
+      description:
+        "A private media archive built with Docker, Nginx, Node.js, React and MongoDB. Runs on EC2 with CI/CD via GitHub Actions and DNS via Route 53.",
+      image:
+        "https://images.unsplash.com/photo-1527694224012-b644f3fcb692?auto=format&fit=crop&w=1050&q=80",
+    },
+    {
+      title: "TaskFlow",
+      description:
+        "A lightweight workflow manager for automating daily tasks using Node.js and React.",
+      image:
+        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1050&q=80",
+    },
+    {
+      title: "Portfolio Site",
+      description:
+        "This website! A responsive portfolio built with React and deployed with modern DevOps practices.",
+      image:
+        "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=1050&q=80",
+    },
+  ];
+  const [projectIndex, setProjectIndex] = useState(0);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
+
+    const nextProject = () =>
+    setProjectIndex((idx) => (idx + 1) % projects.length);
+  const prevProject = () =>
+    setProjectIndex((idx) => (idx - 1 + projects.length) % projects.length);
 
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
@@ -124,13 +153,20 @@ function App() {
       </section>
 
       <section className="section fade-in" id="projects">
-        <div className="content-box">
-          <h2>Projects</h2>
-          <p>
-            I created "HomeVault," a private media archive for organizing home videos
-            and photos. Built with Docker, Nginx, Node.js, React, and MongoDB, it
-            runs on EC2 with CI/CD via GitHub Actions and DNS via Route 53.
-          </p>
+        <div
+          className="carousel"
+          style={{ backgroundImage: `url(${projects[projectIndex].image})` }}
+        >
+          <div className="carousel-content">
+            <h2>{projects[projectIndex].title}</h2>
+            <p>{projects[projectIndex].description}</p>
+          </div>
+          <button className="carousel-control prev" onClick={prevProject}>
+            ❮
+          </button>
+          <button className="carousel-control next" onClick={nextProject}>
+            ❯
+          </button>
         </div>
       </section>
 
@@ -140,7 +176,7 @@ function App() {
           <p>
             Want to collaborate or say hi?
             <br />
-            Email: <a href="mailto:corbui317@gmail.com">corbui317@gmail.com</a>
+            Email: <a className="email-link" href="mailto:corbui317@gmail.com">corbui317@gmail.com</a>
           </p>
         </div>
       </section>
