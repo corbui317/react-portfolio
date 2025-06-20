@@ -305,6 +305,9 @@ body:not(.light-mode) .content-box {
   width: 100%;
   height: 100%;
   border: none;
+  pointer-events: none;
+  overflow: hidden;
+  filter: blur(4px);
 }
 
 .carousel-content {
