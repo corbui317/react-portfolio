@@ -29,6 +29,12 @@ function App() {
         "This website! A responsive portfolio built with React and deployed with modern DevOps practices.",
       url: "https://coreybui.com",
     },
+    {
+      title: "EC2 Demo Site",
+      description:
+        "A public demo hosted on an EC2 instance.",
+      url: "http://3.139.60.187/",
+    },
   ];
   const [projectIndex, setProjectIndex] = useState(0);
 
