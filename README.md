@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Installation
+
+Before running the development server or tests, install the project dependencies:
+
+```bash
+npm install
+```
+
+Running `npm install` ensures `react-scripts` and other required packages are available for `npm test`.
+
 ## Available Scripts
 
 In the project directory, you can run:
