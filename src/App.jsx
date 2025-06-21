@@ -24,15 +24,15 @@ function App() {
       url: "https://example.com/taskflow",
     },
     {
-      title: "Portfolio Site",
+      title: "Personal Portfolio",
       description:
-        "This website! A responsive portfolio built with React and deployed with modern DevOps practices.",
+        "Hi I'm Corey Bui, a creative systems engineer and full-stack developer showcasing the projects, skills, and passions that drive my work in tech.",
       url: "https://coreybui.com",
     },
     {
-      title: "EC2 Demo Site",
+      title: "Soleil Nail Lounge",
       description:
-        "A public demo hosted on an EC2 instance.",
+        "Soleil Nail Spa Twelve Oaks Mall",
       url: "http://3.139.60.187/",
     },
   ];
@@ -206,7 +206,35 @@ function App() {
         </div>
       </section>
 
-      <footer>&copy; 2025 Corey Bui — Built with React & ❤️</footer>
+      <footer>
+        <div className="social-icons">
+          <a
+            href="https://www.instagram.com/cbui17/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <i className="fab fa-instagram" />
+          </a>
+          <a
+            href="https://www.facebook.com/cbui17"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+          >
+            <i className="fab fa-facebook" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/corey-bui/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <i className="fab fa-linkedin" />
+          </a>
+        </div>
+        &copy; 2025 Corey Bui — Built with React & ❤️
+      </footer>
     </>
   );
 }
