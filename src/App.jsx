@@ -168,12 +168,21 @@ function App() {
             if (e.key === "Enter") window.open(projects[projectIndex].url, "_blank");
           }}
         >
-          <iframe
-            key={projects[projectIndex].url}
-            src={projects[projectIndex].preview || projects[projectIndex].url}
-            title={projects[projectIndex].title}
-            className="carousel-preview"
-          ></iframe>
+          {projects[projectIndex].preview ? (
+            <img
+              key={projects[projectIndex].url}
+              src={projects[projectIndex].preview}
+              alt={projects[projectIndex].title}
+              className="carousel-preview"
+            />
+          ) : (
+            <iframe
+              key={projects[projectIndex].url}
+              src={projects[projectIndex].url}
+              title={projects[projectIndex].title}
+              className="carousel-preview"
+            ></iframe>
+          )}
           <div className="carousel-content">
             <h2>{projects[projectIndex].title}</h2>
           </div>

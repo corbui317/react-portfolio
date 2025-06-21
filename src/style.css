@@ -111,7 +111,7 @@ header {
   text-decoration: none;
   color: #cbd5e1;
   position: relative;
-  font-size: 1.1rem;  
+  font-size: 1.25rem;
 }
 
 .bottom-menu a::after {
@@ -162,15 +162,6 @@ header {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   position: relative;
   text-align: center;
-}
-
-.section::after {
-  content: '';
-  display: block;
-  height: 1px;
-  width: 80%;
-  margin: 4rem auto 0;
-  background: rgba(255,255,255,0.1);
 }
 
 .section h2 {
@@ -366,6 +357,7 @@ body:not(.light-mode) .content-box {
   pointer-events: none;
   overflow: hidden;
   filter: blur(4px);
+  object-fit: cover;  
 }
 
 .carousel-content {
