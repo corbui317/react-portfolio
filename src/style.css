@@ -36,6 +36,13 @@ header {
   color: #ffffff;
 }
 
+.home-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
 .menu-button {
   font-size: 1.5rem;
   cursor: pointer;
@@ -90,6 +97,38 @@ header {
 }
 
 .menu a:hover {
+  color: #ffffff;
+}
+
+.bottom-menu {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin: 2rem;
+}
+
+.bottom-menu a {
+  text-decoration: none;
+  color: #cbd5e1;
+  position: relative;
+}
+
+.bottom-menu a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background: currentColor;
+  transition: width 0.3s ease-in-out;
+}
+
+.bottom-menu a:hover::after {
+  width: 100%;
+}
+
+.bottom-menu a:hover {
   color: #ffffff;
 }
 

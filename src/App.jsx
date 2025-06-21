@@ -101,7 +101,7 @@ function App() {
 
   return (
     <>
-      <header>
+      <header id="top">
         <div className="header-buttons">
           <button
             className="menu-button"
@@ -118,8 +118,14 @@ function App() {
             {theme === "light" ? "☀️" : "🌙"}
           </button>
         </div>
-        <div className="logo">Corey Bui</div>
+        <button
+          className="logo home-button"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          Corey Bui
+        </button>
         <div className={`menu${menuOpen ? " open" : ""}`}>
+          <a href="#top">Home</a>
           <a href="#about">About</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
@@ -201,6 +207,13 @@ function App() {
           </p>
         </div>
       </section>
+
+      <div className="bottom-menu">
+        <a href="#top">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
 
       <footer>
         <div className="social-icons">
