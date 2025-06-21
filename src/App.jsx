@@ -162,6 +162,7 @@ function App() {
           }}
         >
           <iframe
+            key={projects[projectIndex].url}
             src={projects[projectIndex].url}
             title={projects[projectIndex].title}
             className="carousel-preview"
