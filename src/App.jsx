@@ -30,6 +30,7 @@ function App() {
       title: "Soleil Nail Lounge",
       image: "/logo192.png",
       url: "http://3.139.60.187/",
+      preview: "https://s.wordpress.com/mshots/v1/http://3.139.60.187",  
     },
   ];
   const [projectIndex, setProjectIndex] = useState(0);
@@ -169,7 +170,7 @@ function App() {
         >
           <iframe
             key={projects[projectIndex].url}
-            src={projects[projectIndex].url}
+            src={projects[projectIndex].preview || projects[projectIndex].url}
             title={projects[projectIndex].title}
             className="carousel-preview"
           ></iframe>
@@ -208,12 +209,12 @@ function App() {
         </div>
       </section>
 
-      <div className="bottom-menu">
-        <a href="#top">Home</a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </div>
+        <div className="bottom-menu">
+          <a href="#top">Home</a>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
 
       <footer>
         <div className="social-icons">

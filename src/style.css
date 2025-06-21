@@ -102,15 +102,16 @@ header {
 
 .bottom-menu {
   display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-  margin: 2rem;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem 0;
 }
 
 .bottom-menu a {
   text-decoration: none;
   color: #cbd5e1;
   position: relative;
+  font-size: 1.1rem;  
 }
 
 .bottom-menu a::after {
