@@ -13,26 +13,22 @@ function App() {
   const projects = [
     {
       title: "HomeVault",
-      description:
-        "A private media archive built with Docker, Nginx, Node.js, React and MongoDB. Runs on EC2 with CI/CD via GitHub Actions and DNS via Route 53.",
+      image: "/logo192.png",
       url: "https://example.com/homevault",
     },
     {
       title: "TaskFlow",
-      description:
-        "A lightweight workflow manager for automating daily tasks using Node.js and React.",
+      image: "/logo192.png",
       url: "https://example.com/taskflow",
     },
     {
       title: "Personal Portfolio",
-      description:
-        "Hi I'm Corey Bui, a creative systems engineer and full-stack developer showcasing the projects, skills, and passions that drive my work in tech.",
+      image: "/logo192.png",
       url: "https://coreybui.com",
     },
     {
       title: "Soleil Nail Lounge",
-      description:
-        "Soleil Nail Spa Twelve Oaks Mall",
+      image: "/logo192.png",
       url: "http://3.139.60.187/",
     },
   ];
@@ -165,14 +161,13 @@ function App() {
             if (e.key === "Enter") window.open(projects[projectIndex].url, "_blank");
           }}
         >
-          <iframe
-            src={projects[projectIndex].url}
-            title={projects[projectIndex].title}
+          <img
+            src={projects[projectIndex].image}
+            alt={projects[projectIndex].title}
             className="carousel-preview"
-          ></iframe>
+          />
           <div className="carousel-content">
             <h2>{projects[projectIndex].title}</h2>
-            <p>{projects[projectIndex].description}</p>
           </div>
           <button
             className="carousel-control prev"
@@ -214,7 +209,7 @@ function App() {
             rel="noopener noreferrer"
             aria-label="Instagram"
           >
-            <i className="fab fa-instagram" />
+            <i className="fa-brands fa-instagram"></i>
           </a>
           <a
             href="https://www.facebook.com/cbui17"
@@ -222,7 +217,7 @@ function App() {
             rel="noopener noreferrer"
             aria-label="Facebook"
           >
-            <i className="fab fa-facebook" />
+            <i className="fa-brands fa-facebook"></i>
           </a>
           <a
             href="https://www.linkedin.com/in/corey-bui/"
@@ -230,7 +225,7 @@ function App() {
             rel="noopener noreferrer"
             aria-label="LinkedIn"
           >
-            <i className="fab fa-linkedin" />
+           <i className="fa-brands fa-linkedin"></i>
           </a>
         </div>
         &copy; 2025 Corey Bui — Built with React & ❤️
