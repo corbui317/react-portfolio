@@ -217,15 +217,13 @@ function App() {
           </p>
         </div>
       </section>
-
+      <footer>
         <div className="bottom-menu">
           <a href="#top">Home</a>
           <a href="#about">About</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
         </div>
-
-      <footer>
         <div className="social-icons">
           <a
             href="https://www.instagram.com/cbui17/"
