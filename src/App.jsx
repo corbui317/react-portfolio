@@ -14,7 +14,7 @@ function App() {
     {
       title: "HomeVault",
       image: "/logo192.png",
-      url: "https://example.com/homevault",
+      url: "https://home-vault.me",
     },
     {
       title: "TaskFlow",
@@ -29,8 +29,8 @@ function App() {
     {
       title: "Soleil Nail Lounge",
       image: "/logo192.png",
-      url: "http://3.139.60.187/",
-      preview: "https://s.wordpress.com/mshots/v1/http://3.139.60.187",  
+      url: "https://lenails.info",
+      preview: "https://s.wordpress.com/mshots/v1/https://lenails.info",
     },
   ];
   const [projectIndex, setProjectIndex] = useState(0);
@@ -138,8 +138,8 @@ function App() {
           <span id="typewriter"></span>
         </h1>
         <p>
-          I build modern web experiences and automation tools that bridge backend
-          infrastructure with engaging frontends.
+          I build modern web experiences and automation tools that bridge
+          backend infrastructure with engaging frontends.
         </p>
       </section>
 
@@ -147,13 +147,13 @@ function App() {
         <div className="content-box">
           <h2>About Me</h2>
           <p>
-            I'm a systems engineer and web developer with a passion for simplifying
-            complexity. My toolkit includes Docker, Linux, React, Node.js, and cloud
-            technologies like AWS.
+            I'm a systems engineer and web developer with a passion for
+            simplifying complexity. My toolkit includes Docker, Linux, React,
+            Node.js, and cloud technologies like AWS.
             <br />
             <br />
-            Outside of tech, I love watching movies, cooking, playing music (piano,
-            guitar, trumpet), and tinkering with servers just for fun.
+            Outside of tech, I love watching movies, cooking, playing music
+            (piano, guitar, trumpet), and tinkering with servers just for fun.
           </p>
         </div>
       </section>
@@ -165,7 +165,8 @@ function App() {
           tabIndex={0}
           onClick={() => window.open(projects[projectIndex].url, "_blank")}
           onKeyPress={(e) => {
-            if (e.key === "Enter") window.open(projects[projectIndex].url, "_blank");
+            if (e.key === "Enter")
+              window.open(projects[projectIndex].url, "_blank");
           }}
         >
           {projects[projectIndex].preview ? (
@@ -213,7 +214,10 @@ function App() {
           <p>
             Want to collaborate or say hi?
             <br />
-            Email: <a className="email-link" href="mailto:corbui317@gmail.com">corbui317@gmail.com</a>
+            Email:{" "}
+            <a className="email-link" href="mailto:corbui317@gmail.com">
+              corbui317@gmail.com
+            </a>
           </p>
         </div>
       </section>
@@ -247,7 +251,7 @@ function App() {
             rel="noopener noreferrer"
             aria-label="LinkedIn"
           >
-           <i className="fa-brands fa-linkedin"></i>
+            <i className="fa-brands fa-linkedin"></i>
           </a>
         </div>
         &copy; 2025 Corey Bui — Built with React & ❤️
