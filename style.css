@@ -3,11 +3,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 body {
-  background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+  background: url("https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1920&q=80")
+    no-repeat center center fixed;
   background-size: cover;
   color: #ffffff;
   overflow-x: hidden;
@@ -121,12 +122,12 @@ header {
 }
 
 .section::after {
-  content: '';
+  content: "";
   display: block;
   height: 1px;
   width: 80%;
   margin: 4rem auto 0;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .section h2 {
@@ -170,7 +171,8 @@ footer {
 }
 
 body.light-mode {
-  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+  background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80")
+    no-repeat center center fixed;
   background-size: cover;
   color: #111;
 }
@@ -183,7 +185,7 @@ body.light-mode::before {
   height: 100vh;
   width: 100vw;
   background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: brightness(0.97) contrast(1.0);
+  backdrop-filter: brightness(0.97) contrast(1);
   z-index: -1;
 }
 
@@ -221,7 +223,8 @@ body.light-mode a {
 }
 
 /* Button Styles */
-button, .btn {
+button,
+.btn {
   background-color: #2563eb;
   color: white;
   border: none;
@@ -232,7 +235,8 @@ button, .btn {
   transition: background 0.3s;
 }
 
-button:hover, .btn:hover {
+button:hover,
+.btn:hover {
   background-color: #1d4ed8;
 }
 
@@ -267,5 +271,158 @@ body:not(.light-mode) .content-box {
   .theme-toggle {
     right: 70px;
     padding: 0.5rem;
+  }
+}
+
+/* Project Tabs and Slides */
+.project-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tab-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #cbd5e1;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.tab-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.tab-button.active {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.project-content {
+  position: relative;
+  min-height: 200px;
+}
+
+.project-slide {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.project-slide.active {
+  display: block;
+}
+
+.project-slide h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.project-links {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.link-preview {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  color: #94a3b8;
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-link {
+  background: rgba(59, 130, 246, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  color: #60a5fa;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.project-link:hover {
+  background: rgba(59, 130, 246, 0.3);
+  color: #93c5fd;
+  transform: translateY(-1px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Light mode adjustments for project elements */
+body.light-mode .tab-button {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #374151;
+}
+
+body.light-mode .tab-button:hover {
+  background: rgba(0, 0, 0, 0.15);
+  color: #111827;
+}
+
+body.light-mode .tab-button.active {
+  background: rgba(0, 0, 0, 0.2);
+  color: #111827;
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+body.light-mode .project-slide h3 {
+  color: #111827;
+}
+
+body.light-mode .link-preview {
+  background: rgba(0, 0, 0, 0.1);
+  color: #6b7280;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .project-link {
+  background: rgba(59, 130, 246, 0.1);
+  color: #2563eb;
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+body.light-mode .project-link:hover {
+  background: rgba(59, 130, 246, 0.15);
+  color: #1d4ed8;
+}
+
+/* Mobile responsiveness for project tabs */
+@media (max-width: 600px) {
+  .project-tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tab-button {
+    width: 200px;
+  }
+
+  .project-links {
+    flex-direction: column;
+    align-items: center;
   }
 }

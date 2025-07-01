@@ -51,12 +51,53 @@
     <section class="section fade-in" id="projects">
       <div class="content-box">
         <h2>Projects</h2>
-        <p>
-          I created "HomeVault," a private media archive for organizing home
-          videos and photos. Built with Docker, Nginx, Node.js, React, and
-          MongoDB, it runs on EC2 with CI/CD via GitHub Actions and DNS via
-          Route 53.
-        </p>
+        <div class="project-tabs">
+          <button class="tab-button active" onclick="showProject('homevault')">
+            HomeVault
+          </button>
+          <button class="tab-button" onclick="showProject('soleil')">
+            Soleil Nails
+          </button>
+        </div>
+
+        <div class="project-content">
+          <div id="homevault" class="project-slide active">
+            <h3>HomeVault</h3>
+            <p>
+              I created "HomeVault," a private media archive for organizing home
+              videos and photos. Built with Docker, Nginx, Node.js, React, and
+              MongoDB, it runs on EC2 with CI/CD via GitHub Actions and DNS via
+              Route 53.
+            </p>
+            <div class="project-links">
+              <span class="link-preview">home-vault.me</span>
+              <span class="link-preview">www.home-vault.me</span>
+            </div>
+          </div>
+
+          <div id="soleil" class="project-slide">
+            <h3>Soleil Nails</h3>
+            <p>
+              A modern nail salon website showcasing services and appointments.
+              Built with modern web technologies to provide an elegant user
+              experience.
+            </p>
+            <div class="project-links">
+              <a
+                href="https://lenails.info"
+                target="_blank"
+                class="project-link"
+                >lenails.info</a
+              >
+              <a
+                href="https://www.lenails.info"
+                target="_blank"
+                class="project-link"
+                >www.lenails.info</a
+              >
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
