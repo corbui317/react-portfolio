@@ -15,11 +15,7 @@ function App() {
       title: "HomeVault",
       image: "/logo192.png",
       url: "https://home-vault.me",
-    },
-    {
-      title: "TaskFlow",
-      image: "/logo192.png",
-      url: "https://example.com/taskflow",
+      preview: "https://s.wordpress.com/mshots/v1/https://home-vault.me",
     },
     {
       title: "Personal Portfolio",
@@ -29,8 +25,8 @@ function App() {
     {
       title: "Soleil Nail Lounge",
       image: "/logo192.png",
-      url: "https://lenails.info",
-      preview: "https://s.wordpress.com/mshots/v1/https://lenails.info",
+      url: "https://lenail.info",
+      preview: "https://s.wordpress.com/mshots/v1/https://lenail.info",
     },
   ];
   const [projectIndex, setProjectIndex] = useState(0);
