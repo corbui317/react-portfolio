@@ -57,7 +57,29 @@ react-portfolio/
 
 ## Deployment
 
-This project is optimized for deployment on Vercel:
+This project is configured for deployment on Vercel with automatic deployments from GitHub.
+
+### Vercel Deployment (Recommended)
+
+1. **Connect to Vercel**:
+   - Go to https://vercel.com and sign in with GitHub
+   - Click "Add New" → "Project"
+   - Import the `react-portfolio` repository
+   - **Important**: Set the root directory to `react-portfolio` in the project settings
+   - Vercel will auto-detect Next.js and configure the build settings
+
+2. **Configure Custom Domain** (Optional):
+   - In your Vercel project dashboard, go to "Settings" → "Domains"
+   - Add your custom domain (e.g., `coreybui.com`)
+   - Update your DNS records with the nameservers or CNAME records provided by Vercel
+   - Vercel will automatically provision and manage SSL certificates
+
+3. **Automatic Deployments**:
+   - Every push to the `main` branch will trigger a production deployment
+   - Pull requests will get preview deployments with unique URLs
+   - No GitHub Actions workflow needed - Vercel handles everything
+
+### Manual Deployment via CLI
 
 ```bash
 # Install Vercel CLI
@@ -65,7 +87,19 @@ npm i -g vercel
 
 # Deploy
 vercel
+
+# Deploy to production
+vercel --prod
 ```
+
+### Benefits of Vercel Hosting
+
+- Zero-config deployments
+- Automatic HTTPS/SSL certificates
+- Global edge network CDN
+- Preview deployments for pull requests
+- Built-in analytics
+- No server maintenance required
 
 ## Tech Stack
 
