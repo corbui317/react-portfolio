@@ -65,7 +65,7 @@ This project is configured for deployment on Vercel with automatic deployments f
    - Go to https://vercel.com and sign in with GitHub
    - Click "Add New" → "Project"
    - Import the `react-portfolio` repository
-   - **Important**: Set the root directory to `react-portfolio` in the project settings
+   - **Important**: Leave the root directory as `.` (default) - the app is at the repository root
    - Vercel will auto-detect Next.js and configure the build settings
 
 2. **Configure Custom Domain** (Optional):
