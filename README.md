@@ -109,3 +109,11 @@ vercel --prod
 - [Tailwind CSS](https://tailwindcss.com/)
 - [next-themes](https://github.com/pacocoursey/next-themes)
 - [Lucide React](https://lucide.dev/)
+
+## Security Notes
+
+- This portfolio is a public site and does not currently implement authentication, sessions, protected routes, API routes, or server actions.
+- Keep authentication state server-enforced if protected features are added later. Use a vetted provider and HttpOnly, Secure, SameSite cookies; do not store access or refresh tokens in `localStorage` or `sessionStorage`.
+- Protect private pages and data on the server through middleware, route handlers, or server actions. Client-side UI hiding is not an authorization boundary.
+- Project links and preview URLs should remain HTTPS-only. If project data becomes CMS- or API-driven, validate URLs before rendering them.
+- Project previews currently use WordPress mshots. To remove that third-party dependency, replace previews with self-hosted screenshots under `public/`, then remove `s.wordpress.com` from `next.config.js`.
