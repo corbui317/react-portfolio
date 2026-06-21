@@ -1,56 +1,28 @@
-import { Instagram, Facebook, Linkedin, Github } from 'lucide-react';
+import { Facebook, Github, Instagram, Linkedin } from 'lucide-react';
+import { navItems, siteConfig, socialLinks } from '@/data/navigation';
 
-const socialLinks = [
-  {
-    label: 'Instagram',
-    href: 'https://www.instagram.com/cbui17/',
-    icon: Instagram,
-  },
-  {
-    label: 'Facebook',
-    href: 'https://www.facebook.com/cbui17',
-    icon: Facebook,
-  },
-  {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/corey-bui/',
-    icon: Linkedin,
-  },
-  {
-    label: 'GitHub',
-    href: 'https://github.com/cbui17',
-    icon: Github,
-  },
-];
-
-const navItems = [
-  { label: 'Home', href: '#top' },
-  { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
-];
+const iconMap = {
+  GitHub: Github,
+  LinkedIn: Linkedin,
+  Instagram: Instagram,
+  Facebook: Facebook,
+} as const;
 
 export function Footer() {
   return (
-    <footer className="py-12 px-4 mt-20 border-t border-[var(--card-border)]">
-      <div className="max-w-6xl mx-auto">
-        {/* Navigation */}
-        <nav className="flex flex-wrap justify-center gap-6 mb-8">
+    <footer className="mt-8 border-t border-[var(--card-border)] px-4 py-12">
+      <div className="section-container">
+        <nav className="mb-8 flex flex-wrap justify-center gap-6" aria-label="Footer">
           {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="nav-link text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
-            >
+            <a key={item.href} href={item.href} className="nav-link">
               {item.label}
             </a>
           ))}
         </nav>
 
-        {/* Social Links */}
-        <div className="flex justify-center gap-6 mb-8">
+        <div className="mb-8 flex justify-center gap-4">
           {socialLinks.map((link) => {
-            const Icon = link.icon;
+            const Icon = iconMap[link.label];
             return (
               <a
                 key={link.label}
@@ -58,17 +30,16 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={link.label}
-                className="p-2 text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+                className="focus-ring rounded-md p-2 text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
               >
-                <Icon className="w-6 h-6" />
+                <Icon className="h-5 w-5" aria-hidden="true" />
               </a>
             );
           })}
         </div>
 
-        {/* Copyright */}
         <p className="text-center text-sm text-[var(--muted)]">
-          &copy; {new Date().getFullYear()} Corey Bui — Built with Next.js
+          &copy; {new Date().getFullYear()} {siteConfig.name} — Built with Next.js
         </p>
       </div>
     </footer>

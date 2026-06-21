@@ -1,106 +1,87 @@
 'use client';
 
 import { useState } from 'react';
-import { useTheme } from 'next-themes';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import { navItems, siteConfig } from '@/data/navigation';
 
-const navItems = [
-  { label: 'Home', href: '#top' },
-  { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
-];
+const mobileMenuId = 'mobile-primary-nav';
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { setTheme, resolvedTheme } = useTheme();
-
-  const toggleTheme = () => {
-    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
-  };
 
   const scrollToTop = () => {
+    setMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <header
       id="top"
-      className="sticky top-0 z-50 backdrop-blur-md bg-[var(--card-bg)] border-b border-[var(--card-border)]"
+      className="sticky top-0 z-50 border-b border-[var(--card-border)] bg-[var(--card-bg)]/90 backdrop-blur-md"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
+      <div className="section-container flex items-center justify-between py-4">
         <button
+          type="button"
           onClick={scrollToTop}
-          className="text-xl font-bold tracking-tight hover:opacity-80 transition-opacity"
+          className="focus-ring rounded-md text-xl font-bold tracking-tight transition-opacity hover:opacity-80"
         >
-          Corey Bui
+          {siteConfig.name}
         </button>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav
+          className="hidden items-center gap-8 md:flex"
+          aria-label="Primary"
+        >
           {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="nav-link text-sm font-medium text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
-            >
+            <a key={item.href} href={item.href} className="nav-link">
               {item.label}
             </a>
           ))}
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
-            aria-label="Toggle theme"
-          >
-            {resolvedTheme === 'dark' ? (
-              <Sun className="w-5 h-5" />
-            ) : (
-              <Moon className="w-5 h-5" />
-            )}
-          </button>
+          <ThemeToggle />
         </nav>
 
-        {/* Mobile Menu Button */}
-        <div className="flex md:hidden items-center gap-2">
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
           <button
-            onClick={toggleTheme}
-            className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
-            aria-label="Toggle theme"
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            className="focus-ring rounded-lg p-2 transition-colors hover:bg-[var(--surface-muted)]"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls={mobileMenuId}
           >
-            {resolvedTheme === 'dark' ? (
-              <Sun className="w-5 h-5" />
+            {menuOpen ? (
+              <X className="h-6 w-6" aria-hidden="true" />
             ) : (
-              <Moon className="w-5 h-5" />
+              <Menu className="h-6 w-6" aria-hidden="true" />
             )}
-          </button>
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      {menuOpen && (
-        <nav className="md:hidden border-t border-[var(--card-border)] bg-[var(--card-bg)]">
-          <div className="px-4 py-4 flex flex-col gap-4">
+      {menuOpen ? (
+        <nav
+          id={mobileMenuId}
+          className="border-t border-[var(--card-border)] bg-[var(--card-bg)] md:hidden"
+          aria-label="Primary mobile"
+        >
+          <div className="section-container flex flex-col gap-1 py-4">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                onClick={() => setMenuOpen(false)}
-                className="text-sm font-medium text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+                onClick={closeMenu}
+                className="nav-link rounded-md px-2 py-2"
               >
                 {item.label}
               </a>
             ))}
           </div>
         </nav>
-      )}
+      ) : null}
     </header>
   );
 }

@@ -14,6 +14,16 @@ const config: Config = {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        surface: 'var(--surface)',
+        muted: 'var(--muted)',
+        accent: 'var(--accent)',
+      },
+      boxShadow: {
+        card: 'var(--shadow-md)',
+        'card-lg': 'var(--shadow-lg)',
+      },
+      spacing: {
+        header: 'var(--header-offset)',
       },
     },
   },

@@ -27,6 +27,8 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ### Production Build
 
 ```bash
+npm run typecheck
+npm run lint
 npm run build
 npm start
 ```
@@ -43,11 +45,21 @@ react-portfolio/
 │   ├── Header.tsx       # Sticky nav with theme toggle
 │   ├── Hero.tsx         # Typewriter effect + intro
 │   ├── About.tsx        # About section
+│   ├── Skills.tsx       # Skills & focus groups
 │   ├── ProjectGrid.tsx  # Grid of project cards with previews
 │   ├── ProjectCard.tsx  # Individual project card
 │   ├── Contact.tsx      # Contact section
 │   ├── Footer.tsx       # Footer with social links
+│   ├── FadeInSection.tsx
+│   ├── SectionHeading.tsx
+│   ├── ThemeToggle.tsx
 │   └── ThemeProvider.tsx # Dark/light mode context
+├── data/
+│   ├── navigation.ts    # Site config, nav, social links
+│   ├── projects.ts      # Project content
+│   └── skills.ts        # Skill groups
+├── hooks/
+│   └── useFadeIn.ts     # Scroll fade-in observer
 ├── public/              # Static assets
 ├── next.config.js
 ├── tailwind.config.ts
