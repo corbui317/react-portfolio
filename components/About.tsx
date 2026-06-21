@@ -1,51 +1,52 @@
-'use client';
+import { FadeInSection } from '@/components/FadeInSection';
+import { SectionHeading } from '@/components/SectionHeading';
 
-import { useEffect, useRef } from 'react';
+const highlights = [
+  {
+    title: 'Systems & automation',
+    body: 'Docker, Linux, Node.js, and cloud workflows that stay maintainable as projects grow.',
+  },
+  {
+    title: 'Frontend craft',
+    body: 'React and Next.js experiences that are responsive, accessible, and fast on Vercel.',
+  },
+  {
+    title: 'Beyond the screen',
+    body: 'Movies, cooking, piano, guitar, trumpet, and homelab tinkering keep curiosity alive.',
+  },
+];
 
 export function About() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section
-      ref={sectionRef}
-      id="about"
-      className="fade-in py-20 px-4"
-    >
-      <div className="max-w-3xl mx-auto">
-        <div className="bg-[var(--card-bg)] border border-[var(--card-border)] rounded-2xl p-8 sm:p-12 shadow-lg">
-          <h2 className="text-3xl font-bold mb-6 text-center">About Me</h2>
-          <div className="space-y-4 text-[var(--muted)] leading-relaxed">
-            <p>
-              I&apos;m a systems engineer and web developer with a passion for
-              simplifying complexity. My toolkit includes Docker, Linux, React,
-              Node.js, and cloud technologies like AWS.
-            </p>
-            <p>
-              Outside of tech, I love watching movies, cooking, playing music
-              (piano, guitar, trumpet), and tinkering with servers just for fun.
-            </p>
-          </div>
+    <FadeInSection id="about">
+      <div className="section-container-narrow">
+        <SectionHeading
+          title="About Me"
+          subtitle="Systems-minded developer focused on clarity, reliability, and clean user experiences."
+        />
+        <div className="surface-card space-y-8 p-8 sm:p-10">
+          <p className="text-base leading-relaxed text-[var(--muted)] sm:text-lg">
+            I&apos;m a systems engineer and web developer who enjoys simplifying complexity.
+            I build products that feel polished on the surface while staying dependable
+            underneath.
+          </p>
+          <ul className="grid gap-5 sm:grid-cols-3 sm:gap-4">
+            {highlights.map((item) => (
+              <li
+                key={item.title}
+                className="rounded-xl border border-[var(--card-border)] bg-[var(--surface-muted)] p-4"
+              >
+                <h3 className="text-sm font-semibold text-[var(--foreground)]">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
+                  {item.body}
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-    </section>
+    </FadeInSection>
   );
 }

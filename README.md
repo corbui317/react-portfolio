@@ -27,6 +27,8 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ### Production Build
 
 ```bash
+npm run typecheck
+npm run lint
 npm run build
 npm start
 ```
@@ -43,11 +45,21 @@ react-portfolio/
 │   ├── Header.tsx       # Sticky nav with theme toggle
 │   ├── Hero.tsx         # Typewriter effect + intro
 │   ├── About.tsx        # About section
+│   ├── Skills.tsx       # Skills & focus groups
 │   ├── ProjectGrid.tsx  # Grid of project cards with previews
 │   ├── ProjectCard.tsx  # Individual project card
 │   ├── Contact.tsx      # Contact section
 │   ├── Footer.tsx       # Footer with social links
+│   ├── FadeInSection.tsx
+│   ├── SectionHeading.tsx
+│   ├── ThemeToggle.tsx
 │   └── ThemeProvider.tsx # Dark/light mode context
+├── data/
+│   ├── navigation.ts    # Site config, nav, social links
+│   ├── projects.ts      # Project content
+│   └── skills.ts        # Skill groups
+├── hooks/
+│   └── useFadeIn.ts     # Scroll fade-in observer
 ├── public/              # Static assets
 ├── next.config.js
 ├── tailwind.config.ts
@@ -109,3 +121,11 @@ vercel --prod
 - [Tailwind CSS](https://tailwindcss.com/)
 - [next-themes](https://github.com/pacocoursey/next-themes)
 - [Lucide React](https://lucide.dev/)
+
+## Security Notes
+
+- This portfolio is a public site and does not currently implement authentication, sessions, protected routes, API routes, or server actions.
+- Keep authentication state server-enforced if protected features are added later. Use a vetted provider and HttpOnly, Secure, SameSite cookies; do not store access or refresh tokens in `localStorage` or `sessionStorage`.
+- Protect private pages and data on the server through middleware, route handlers, or server actions. Client-side UI hiding is not an authorization boundary.
+- Project links and preview URLs should remain HTTPS-only. If project data becomes CMS- or API-driven, validate URLs before rendering them.
+- Project previews currently use WordPress mshots. To remove that third-party dependency, replace previews with self-hosted screenshots under `public/`, then remove `s.wordpress.com` from `next.config.js`.
