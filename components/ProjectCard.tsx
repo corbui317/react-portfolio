@@ -6,6 +6,8 @@ interface ProjectCardProps {
   project: Project;
 }
 
+const SAFE_ROOT_RELATIVE_PATH = /^\/[a-zA-Z0-9/_.-]+$/;
+
 function getSafeHttpsUrl(value?: string) {
   if (!value) {
     return undefined;
@@ -19,7 +21,19 @@ function getSafeHttpsUrl(value?: string) {
   }
 }
 
+function isSafeRootRelativePath(value?: string): value is string {
+  if (!value || !value.startsWith('/') || value.startsWith('//') || value.includes('..')) {
+    return false;
+  }
+
+  return SAFE_ROOT_RELATIVE_PATH.test(value);
+}
+
 function getPreviewUrl(preview: string | undefined, safeProjectUrl: string | undefined) {
+  if (isSafeRootRelativePath(preview)) {
+    return preview;
+  }
+
   const safePreviewUrl = getSafeHttpsUrl(preview);
 
   if (safePreviewUrl) {

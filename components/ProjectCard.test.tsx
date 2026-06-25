@@ -36,4 +36,70 @@ describe('ProjectCard', () => {
     expect(screen.queryByRole('link', { name: /opens in a new tab/i })).not.toBeInTheDocument();
     expect(screen.getByText('Test Project')).toBeInTheDocument();
   });
+
+  describe('preview resolution', () => {
+    it('uses safe root-relative preview paths', () => {
+      const project: Project = {
+        ...baseProject,
+        preview: '/logo512.png',
+      };
+
+      render(<ProjectCard project={project} />);
+
+      expect(screen.getByAltText('Test Project project preview')).toHaveAttribute(
+        'src',
+        '/logo512.png',
+      );
+    });
+
+    it('uses explicit HTTPS preview URLs', () => {
+      const project: Project = {
+        ...baseProject,
+        preview: 'https://cdn.example.com/x.png',
+      };
+
+      render(<ProjectCard project={project} />);
+
+      expect(screen.getByAltText('Test Project project preview')).toHaveAttribute(
+        'src',
+        expect.stringContaining('cdn.example.com'),
+      );
+    });
+
+    it('generates mshot when preview is missing', () => {
+      render(<ProjectCard project={baseProject} />);
+
+      expect(screen.getByAltText('Test Project project preview')).toHaveAttribute(
+        'src',
+        expect.stringContaining('s.wordpress.com/mshots'),
+      );
+    });
+
+    it('falls back to favicon when preview and url are invalid', () => {
+      const project: Project = {
+        ...baseProject,
+        url: 'not-a-url',
+      };
+
+      render(<ProjectCard project={project} />);
+
+      expect(screen.getByAltText('Test Project project preview')).toHaveAttribute(
+        'src',
+        expect.stringContaining('logo_favicon.svg'),
+      );
+    });
+
+    it('rejects HTTP preview and falls through to mshot', () => {
+      const project: Project = {
+        ...baseProject,
+        preview: 'http://insecure.example.com/x.png',
+      };
+
+      render(<ProjectCard project={project} />);
+
+      const src = screen.getByAltText('Test Project project preview').getAttribute('src');
+      expect(src).toContain('s.wordpress.com/mshots');
+      expect(src).not.toContain('insecure');
+    });
+  });
 });

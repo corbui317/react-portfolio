@@ -43,9 +43,11 @@ interface Project {
 
 - **URL safety:** Only `https:` URLs become clickable links. HTTP or invalid URLs render as non-link `<article>`.
 - **Preview resolution:**
-  1. Use `preview` if valid HTTPS URL
-  2. Else generate WordPress mshot from safe project URL
-  3. Else fallback `/logo_favicon.svg`
+  1. Use `preview` if it is a safe root-relative path (starts with `/`, matches `^/[a-zA-Z0-9/_.-]+$`, no `..` or `//`)
+  2. Else use `preview` if valid HTTPS URL
+  3. Else generate WordPress mshot from safe project URL
+  4. Else fallback `/logo_favicon.svg`
+- Local previews (e.g. `/logo512.png`) must live under `public/` so Next.js can serve them.
 - Remote images use `unoptimized` when `src` starts with `http`.
 - Link cards: `target="_blank"`, `rel="noopener noreferrer"`, `aria-label` includes "opens in a new tab".
 - Tags rendered as pill list with `aria-label` per project.
@@ -63,6 +65,8 @@ interface Project {
 ## Edge Cases
 
 - Missing `preview`: mshot or favicon fallback
+- `preview: '/logo512.png'`: local asset from `public/`
+- `preview: 'http://...'` or `preview: '//cdn...'`: rejected, fall through to mshot or favicon
 - Empty `url`: card not clickable
 - `http://` URL: not linked (security)
 - Long titles/descriptions: layout wraps without overflow break
