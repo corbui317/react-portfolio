@@ -1,6 +1,22 @@
 import { test, expect } from '@playwright/test';
 import { siteConfig } from '../data/navigation';
 
+const brandAssets = [
+  '/logo_favicon.svg',
+  '/favicon.ico',
+  '/logo192.png',
+  '/logo512.png',
+] as const;
+
+test.describe('Brand assets', () => {
+  for (const assetPath of brandAssets) {
+    test(`${assetPath} is served with 200`, async ({ request }) => {
+      const response = await request.get(assetPath);
+      expect(response.ok()).toBeTruthy();
+    });
+  }
+});
+
 test.describe('SEO routes', () => {
   test('robots.txt allows crawling and references sitemap', async ({ request }) => {
     const response = await request.get('/robots.txt');

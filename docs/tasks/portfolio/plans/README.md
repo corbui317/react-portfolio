@@ -4,6 +4,8 @@ Durable execution handoffs for non-trivial `PORT-*` tasks. Adapted from Homeify'
 
 Save plans here (e.g. `PORT-01-E2E-01-context-pack.md`) before clicking **Build** in Cursor.
 
+**Remediation (Sprint 2):** Ten context packs `PORT-05-*-context-pack.md` map to [remediation specs](../../specs/portfolio/remediation/README.md).
+
 ## MD Plan Template
 
 ```markdown

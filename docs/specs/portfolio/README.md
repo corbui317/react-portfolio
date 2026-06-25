@@ -6,6 +6,7 @@ Implementation-ready specs for the Corey Bui portfolio. Each document defines be
 
 1. [00-portfolio-roadmap.md](./00-portfolio-roadmap.md) — scope, sequencing, non-goals, quality bar
 2. **P0:** [01-homepage](./01-homepage-experience.md) · [02-projects](./02-project-content-and-cards.md) · [03-seo-a11y-perf](./03-seo-accessibility-performance.md)
+3. **Remediation:** [remediation/](./remediation/README.md) — code review fixes (PORT-05-*)
 
 ## Workflow
 

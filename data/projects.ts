@@ -25,6 +25,13 @@ export const projects: Project[] = [
     tags: ['Next.js', 'React', 'TypeScript'],
   },
   {
+    title: 'Agency Agents',
+    url: 'https://github.com/msitarzewski/agency-agents',
+    description: 'A complete AI agency at your fingertips — a curated collection of specialized AI agent configurations for every business function.',
+    outcome: 'Open-sourced a comprehensive agent library that became a widely-adopted reference for AI-powered workflows.',
+    tags: ['AI', 'Agents', 'Open Source'],
+  },
+  {
     title: 'Soleil Nail Lounge',
     url: 'https://lenail.info',
     preview: 'https://s.wordpress.com/mshots/v1/https://lenail.info?w=800&h=600',

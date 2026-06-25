@@ -43,6 +43,8 @@ npm run test:e2e          # Playwright E2E (local, uses dev server)
 npm run test:e2e:ci       # Playwright E2E (Chromium only, for CI)
 ```
 
+Full verification workflow, E2E coverage checklist, and Evidence Collector standards: [e2e/e2e-and-development-testing.md](e2e/e2e-and-development-testing.md).
+
 ## Spec-Driven Development
 
 This project uses **spec-driven design** adapted from [Homeify](https://github.com/royalraj95/homeify-app). Specs are the product contract; tasks and tests provide evidence before work is marked done.
@@ -98,7 +100,7 @@ react-portfolio/
 │   ├── agents/          # Agent workflow guides
 │   ├── specs/portfolio/ # Feature specifications (product contract)
 │   └── tasks/portfolio/ # Implementation backlog and plans
-├── e2e/                 # Playwright end-to-end tests
+├── e2e/                 # Playwright end-to-end tests + testing guide
 ├── hooks/
 │   └── useFadeIn.ts     # Scroll fade-in observer
 ├── public/              # Static assets
