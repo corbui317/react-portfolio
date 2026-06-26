@@ -9,14 +9,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: 'HomeVault',
-    url: 'https://home-vault.me',
-    preview: 'https://s.wordpress.com/mshots/v1/https://home-vault.me?w=800&h=600',
-    description: 'Self-hosted photo management platform for families.',
-    outcome: 'Designed a reliable media workflow with privacy-first storage.',
-    tags: ['Self-hosted', 'Media', 'Infrastructure'],
-  },
-  {
     title: 'Personal Portfolio',
     url: 'https://coreybui.com',
     preview: '/logo512.png',
@@ -25,11 +17,11 @@ export const projects: Project[] = [
     tags: ['Next.js', 'React', 'TypeScript'],
   },
   {
-    title: 'Agency Agents',
-    url: 'https://github.com/msitarzewski/agency-agents',
-    description: 'A complete AI agency at your fingertips — a curated collection of specialized AI agent configurations for every business function.',
-    outcome: 'Open-sourced a comprehensive agent library that became a widely-adopted reference for AI-powered workflows.',
-    tags: ['AI', 'Agents', 'Open Source'],
+    title: 'Decidarr',
+    url: 'https://github.com/corbui317/decidarr',
+    description: 'Plex movie roulette that randomly picks movies or TV shows from your libraries.',
+    outcome: 'Built a self-hosted app with Plex, Tautulli, and TMDb integrations and themed slot-machine UI.',
+    tags: ['Next.js', 'Plex', 'Open Source'],
   },
   {
     title: 'Soleil Nail Lounge',

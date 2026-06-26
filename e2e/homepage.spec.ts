@@ -142,7 +142,7 @@ test.describe('Homepage', () => {
   test('project section has HTTPS external link', async ({ page }) => {
     await page.goto('/');
 
-    const projectLink = page.getByRole('link', { name: /HomeVault — opens in a new tab/i });
+    const projectLink = page.getByRole('link', { name: /Personal Portfolio — opens in a new tab/i });
     await expect(projectLink).toBeVisible();
     await expect(projectLink).toHaveAttribute('href', /^https:\/\//);
   });

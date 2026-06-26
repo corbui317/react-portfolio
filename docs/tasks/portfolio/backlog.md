@@ -374,6 +374,7 @@ Plans: [docs/tasks/portfolio/plans/PORT-05-*-context-pack.md](./plans/)
   - [x] `eslint-config-next` major matches `next` major
   - [x] CI hardened with concurrency and Playwright failure artifacts
   - [x] README documents deploy runbook
-  - [ ] Vercel production deployment reaches READY
+  - [x] Vercel production deployment reaches READY
 - **Verification:** full CI suite, Vercel build logs, post-deploy smoke check
 - **Completed (local):** 2026-06-26 — typecheck, lint, test, build, e2e:ci all pass
+- **Completed (deploy):** 2026-06-26 — CI run 28247175604 success; Vercel deployment H5BTseU6cFdYdxVSUx5r2FgMiDWN success
