@@ -209,6 +209,8 @@ Dependency-ordered tasks derived from [docs/specs/portfolio/](../../specs/portfo
 
 **Sprint 2 (code review remediation):** PORT-05-* — see [remediation specs](../../specs/portfolio/remediation/README.md)
 
+**Sprint 3 (deployment):** PORT-06-DEPLOY-01 — see [04-vercel-deployment-stabilization.md](../../specs/portfolio/04-vercel-deployment-stabilization.md)
+
 **Future (not scheduled):**
 
 - PORT-03-WEB-01 — Self-hosted project screenshots
@@ -271,9 +273,10 @@ Plans: [docs/tasks/portfolio/plans/PORT-05-*-context-pack.md](./plans/)
 - **Scope:** Delete 11 duplicate files; optional tsconfig exclude guardrail
 - **Excluded:** ESLint version alignment (PORT-05-CI-01)
 - **Acceptance criteria:**
-  - [ ] No `* 2.*` source files remain
-  - [ ] typecheck, lint, test pass
+  - [x] No `* 2.*` source files remain
+  - [x] typecheck, lint, test pass
 - **Verification:** CI commands
+- **Completed:** 2026-06-26 — removed 11 duplicate files; tsconfig exclude guardrail added
 
 ### PORT-05-A11Y-01 — Fix Hero typewriter screen reader behavior
 
@@ -334,9 +337,10 @@ Plans: [docs/tasks/portfolio/plans/PORT-05-*-context-pack.md](./plans/)
 - **Scope:** Pin `eslint-config-next` to 15.x
 - **Excluded:** Next 16 upgrade
 - **Acceptance criteria:**
-  - [ ] eslint-config-next major matches next major
-  - [ ] lint passes
+  - [x] eslint-config-next major matches next major
+  - [x] lint passes
 - **Verification:** lint, typecheck
+- **Completed:** 2026-06-26 — pinned eslint-config-next@15.5.19; FlatCompat eslint.config.mjs
 
 ### PORT-05-DOCS-01 — Sync testing guide and backlog evidence
 
@@ -350,3 +354,26 @@ Plans: [docs/tasks/portfolio/plans/PORT-05-*-context-pack.md](./plans/)
   - [ ] Docs match current `e2e/` suite
   - [ ] Sprint 1 evidence recorded
 - **Verification:** manual review
+
+---
+
+## Phase 5 — Vercel Deployment Stabilization
+
+### PORT-06-DEPLOY-01 — Stabilize Vercel deployments
+
+- **Spec:** [04-vercel-deployment-stabilization.md](../../specs/portfolio/04-vercel-deployment-stabilization.md)
+- **Plan:** [PORT-06-DEPLOY-01-context-pack.md](./plans/PORT-06-DEPLOY-01-context-pack.md)
+- **Dependencies:** PORT-05-CHORE-01, PORT-05-CI-01 (recommended)
+- **Files:** `vercel.json`, `package.json`, `package-lock.json`, `.github/workflows/ci.yml`, `README.md`, `tsconfig.json` (optional)
+- **Scope:** Deterministic Vercel install, Node policy, CI hardening, deploy runbook, production deploy verification
+- **Excluded:** Next 16 upgrade, custom prebuilt deploy pipeline, error monitoring integrations
+- **Acceptance criteria:**
+  - [x] `vercel.json` uses `npm ci`
+  - [x] Node/package manager policy in `package.json`
+  - [x] No `* 2.*` duplicates remain
+  - [x] `eslint-config-next` major matches `next` major
+  - [x] CI hardened with concurrency and Playwright failure artifacts
+  - [x] README documents deploy runbook
+  - [ ] Vercel production deployment reaches READY
+- **Verification:** full CI suite, Vercel build logs, post-deploy smoke check
+- **Completed (local):** 2026-06-26 — typecheck, lint, test, build, e2e:ci all pass

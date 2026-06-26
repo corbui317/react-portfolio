@@ -114,16 +114,28 @@ react-portfolio/
 
 ## Deployment
 
-This project is configured for deployment on Vercel with automatic deployments from GitHub.
+This project is configured for deployment on Vercel with automatic deployments from GitHub. See [docs/specs/portfolio/04-vercel-deployment-stabilization.md](docs/specs/portfolio/04-vercel-deployment-stabilization.md) for the full deployment spec.
 
-### Vercel Deployment (Recommended)
+### Vercel Project Settings
+
+| Setting | Value |
+| --- | --- |
+| Root directory | `.` (repository root) |
+| Framework | Next.js |
+| Node.js version | 22.x |
+| Install command | `npm ci` |
+| Build command | `npm run build` |
+
+These are declared in [`vercel.json`](vercel.json) and [`package.json`](package.json) (`engines.node`, `packageManager`).
+
+### Initial Setup
 
 1. **Connect to Vercel**:
    - Go to https://vercel.com and sign in with GitHub
    - Click "Add New" → "Project"
    - Import the `react-portfolio` repository
-   - **Important**: Leave the root directory as `.` (default) - the app is at the repository root
-   - Vercel will auto-detect Next.js and configure the build settings
+   - Leave the root directory as `.` (default)
+   - Confirm Node.js version is **22.x** in Project Settings → General
 
 2. **Configure Custom Domain** (Optional):
    - In your Vercel project dashboard, go to "Settings" → "Domains"
@@ -131,10 +143,15 @@ This project is configured for deployment on Vercel with automatic deployments f
    - Update your DNS records with the nameservers or CNAME records provided by Vercel
    - Vercel will automatically provision and manage SSL certificates
 
-3. **Automatic Deployments**:
-   - Every push to the `main` branch will trigger a production deployment
-   - Pull requests will get preview deployments with unique URLs
-   - GitHub Actions CI runs typecheck, lint, unit tests, build, and E2E on push/PR to `main`
+3. **Branch protection** (recommended):
+   - Require the `CI / verify` check to pass before merging to `main`
+   - This gates production deploys behind the same verification CI runs locally
+
+### Deployment Flow
+
+1. Open a PR — GitHub CI runs verification; Vercel creates a preview URL
+2. Review the preview deployment
+3. Merge to `main` after CI is green — Vercel deploys to production
 
 ### CI Verification
 
@@ -149,17 +166,34 @@ npm run build
 npm run test:e2e:ci
 ```
 
+On E2E failure, Playwright reports are uploaded as CI artifacts.
+
+### Operational Runbook
+
+When a deployment fails or needs investigation:
+
+```bash
+# Install Vercel CLI (if needed)
+npm i -g vercel
+
+# Inspect a deployment
+vercel inspect <deployment-url>
+
+# View error logs
+vercel logs <deployment-url> --level error
+
+# Roll back production to the previous deployment
+vercel rollback
+
+# Promote a validated preview to production (no rebuild)
+vercel promote <deployment-url>
+```
+
 ### Manual Deployment via CLI
 
 ```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel
-
-# Deploy to production
-vercel --prod
+vercel              # preview deployment
+vercel --prod       # production deployment
 ```
 
 ### Benefits of Vercel Hosting
