@@ -244,9 +244,10 @@ Plans: [docs/tasks/portfolio/plans/PORT-05-*-context-pack.md](./plans/)
 - **Scope:** Safe root-relative preview paths before mshot fallback
 - **Excluded:** HTTPS link rule changes
 - **Acceptance criteria:**
-  - [ ] `/logo512.png` preview renders locally
-  - [ ] HTTPS preview and mshot fallback unchanged
+  - [x] `/logo512.png` preview renders locally
+  - [x] HTTPS preview and mshot fallback unchanged
 - **Verification:** unit + manual card inspection
+- **Completed:** 2026-06-25 — commit f2554c8
 
 ### PORT-05-SEC-01 — Harden CSP and JSON-LD injection
 

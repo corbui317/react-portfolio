@@ -52,7 +52,7 @@ test.describe('SEO routes', () => {
     expect(schema.email).toBe(siteConfig.email);
     expect(schema.jobTitle).toBe('Developer & Systems Engineer');
     expect(schema.sameAs).toEqual([
-      'https://github.com/cbui17',
+      'https://github.com/corbui317',
       'https://www.linkedin.com/in/corey-bui/',
       'https://www.instagram.com/cbui17/',
       'https://www.facebook.com/cbui17',

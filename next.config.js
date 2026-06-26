@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const isDev = process.env.NODE_ENV !== 'production';
 
+// Phase 1 CSP: script-src keeps 'unsafe-inline' because (1) JSON-LD is injected
+// via an inline script in app/layout.tsx, and (2) Next.js may emit inline scripts
+// for hydration. ThemeProvider uses next-themes only (no inline scripts).
+// Phase 2: evaluate nonce-based CSP to drop 'unsafe-inline' in production.
 const securityHeaders = [
   {
     key: 'Content-Security-Policy',

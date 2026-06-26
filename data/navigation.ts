@@ -9,7 +9,7 @@ export const navItems = [
 export const socialLinks = [
   {
     label: 'GitHub',
-    href: 'https://github.com/cbui17',
+    href: 'https://github.com/corbui317',
   },
   {
     label: 'LinkedIn',

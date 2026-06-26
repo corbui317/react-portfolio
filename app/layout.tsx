@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { siteConfig } from '@/data/navigation';
+import { serializeJsonLd } from '@/lib/serializeJsonLd';
 import './globals.css';
 
 const inter = Inter({
@@ -82,7 +83,7 @@ const personSchema = {
   email: siteConfig.email,
   jobTitle: 'Developer & Systems Engineer',
   sameAs: [
-    'https://github.com/cbui17',
+    'https://github.com/corbui317',
     'https://www.linkedin.com/in/corey-bui/',
     'https://www.instagram.com/cbui17/',
     'https://www.facebook.com/cbui17',
@@ -102,7 +103,7 @@ export default function RootLayout({
         </a>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(personSchema) }}
         />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
