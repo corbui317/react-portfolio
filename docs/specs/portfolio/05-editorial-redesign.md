@@ -28,7 +28,7 @@ Legacy variables (`--background`, `--foreground`, `--muted`, `--card-border`, �
 
 ## Sections
 
-Resume download (`public/Bui_Resume_SWE_GM_Oct2026.docx`, linked from Hero and Contact via `siteConfig.resumePath`); contact email `corbui31796@gmail.com`.
+Resume download (`public/corey_bui_resume.docx`, linked from Hero and Contact via `siteConfig.resumePath`); contact email `corbui31796@gmail.com`.
 
 Hero → 01 About → 02 Experience → 03 Skills → 04 Education → 05 Projects → 06 Homelab → Contact. Content lives in `data/` (`experience.ts`, `education.ts`, `homelab.ts`, `stats.ts`, `skills.ts`, `projects.ts`).
 

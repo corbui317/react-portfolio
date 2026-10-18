@@ -26,13 +26,6 @@ export const projects: Project[] = [
     tags: ['Next.js 14', 'MongoDB', 'Plex'],
   },
   {
-    title: 'HomeVault',
-    url: 'https://home-vault.me',
-    description: 'Full-stack MERN photo library with Firebase auth and JWT login.',
-    outcome: 'Deployed with Docker behind an Nginx reverse proxy on self-hosted infrastructure.',
-    tags: ['MERN', 'Firebase', 'Docker'],
-  },
-  {
     title: 'Soleil Nail Lounge',
     url: 'https://lenail.info',
     preview: 'https://s.wordpress.com/mshots/v1/https://lenail.info?w=800&h=600',

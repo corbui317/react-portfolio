@@ -32,7 +32,7 @@ export const homelabNodes: HomelabNode[] = [
     id: 'services',
     title: 'Container services',
     role: 'Workloads',
-    description: 'Dockerized apps like Decidarr and HomeVault on Linux, routed through an Nginx reverse proxy.',
+    description: 'Dockerized apps like Decidarr on Linux, routed through an Nginx reverse proxy.',
     tags: ['Docker', 'Linux', 'Nginx'],
   },
 ];

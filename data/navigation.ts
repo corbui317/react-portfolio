@@ -36,5 +36,5 @@ export const siteConfig = {
     'Software engineer building distributed data-platform services and cloud applications in Java, Python, and JavaScript.',
   url: 'https://coreybui.com',
   email: 'corbui31796@gmail.com',
-  resumePath: '/Bui_Resume_SWE_GM_Oct2026.docx',
+  resumePath: '/corey_bui_resume.docx',
 } as const;
