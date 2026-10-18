@@ -28,12 +28,13 @@ Legacy variables (`--background`, `--foreground`, `--muted`, `--card-border`, �
 
 ## Sections
 
+Resume download (`public/Bui_Resume_SWE_GM_Oct2026.docx`, linked from Hero and Contact via `siteConfig.resumePath`); contact email `corbui31796@gmail.com`.
+
 Hero → 01 About → 02 Experience → 03 Skills → 04 Education → 05 Projects → 06 Homelab → Contact. Content lives in `data/` (`experience.ts`, `education.ts`, `homelab.ts`, `stats.ts`, `skills.ts`, `projects.ts`).
 
 ## Excluded
 
-- Phone number (on the resume, intentionally not published).
-- Downloadable resume PDF (no button until a file is added to `public/`).
+- Phone number on the page itself (it does appear inside the downloadable resume).
 - Framer Motion or other animation dependencies.
 
 ## Acceptance Criteria

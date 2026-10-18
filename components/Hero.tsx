@@ -1,4 +1,4 @@
-import { ArrowDown, Github, Linkedin } from 'lucide-react';
+import { ArrowDown, Download, Github, Linkedin } from 'lucide-react';
 import { siteConfig, socialLinks } from '@/data/navigation';
 import { heroStats } from '@/data/stats';
 
@@ -48,6 +48,10 @@ export function Hero() {
           </a>
           <a href="#contact" className="btn-secondary">
             Contact Me
+          </a>
+          <a href={siteConfig.resumePath} download className="btn-secondary">
+            <Download className="h-4 w-4" aria-hidden="true" />
+            Resume
           </a>
           <div className="flex items-center gap-1 sm:ml-3">
             {githubLink ? (

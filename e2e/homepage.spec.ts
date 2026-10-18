@@ -141,6 +141,17 @@ test.describe('Homepage', () => {
     await expect(emailLink).toHaveAttribute('href', `mailto:${siteConfig.email}`);
   });
 
+  test('resume download links resolve', async ({ page, request }) => {
+    await page.goto('/');
+
+    const resumeLinks = page.locator(`a[href="${siteConfig.resumePath}"]`);
+    await expect(resumeLinks).toHaveCount(2);
+    await expect(resumeLinks.first()).toHaveAttribute('download', '');
+
+    const response = await request.get(siteConfig.resumePath);
+    expect(response.status()).toBe(200);
+  });
+
   test('footer social links have noopener noreferrer', async ({ page }) => {
     await page.goto('/');
 

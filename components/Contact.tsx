@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail, MapPin } from 'lucide-react';
+import { ArrowUpRight, Download, Mail, MapPin } from 'lucide-react';
 import { FadeInSection } from '@/components/FadeInSection';
 import { siteConfig, socialLinks } from '@/data/navigation';
 
@@ -34,6 +34,10 @@ export function Contact() {
             >
               <Mail className="h-4 w-4" aria-hidden="true" />
               {siteConfig.email}
+            </a>
+            <a href={siteConfig.resumePath} download className="btn-secondary">
+              <Download className="h-4 w-4" aria-hidden="true" />
+              Download Resume
             </a>
             {profileLinks.map((link) => (
               <a
