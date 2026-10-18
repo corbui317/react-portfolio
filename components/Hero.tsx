@@ -1,139 +1,102 @@
-'use client';
-
-import { useEffect, useRef, useState } from 'react';
-import { ArrowDown, Github, Linkedin } from 'lucide-react';
+import { ArrowDown, Download, Github, Linkedin } from 'lucide-react';
 import { siteConfig, socialLinks } from '@/data/navigation';
+import { heroStats } from '@/data/stats';
 
-const phrases = ['Creative developer.', 'Systems engineer.', 'Automation builder.'];
-const staticTagline = 'Building reliable systems and polished web experiences.';
+const tagline = 'Building reliable systems and polished web experiences.';
 
 export function Hero() {
-  const [displayText, setDisplayText] = useState('');
-  const [phraseIndex, setPhraseIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [motionEnabled, setMotionEnabled] = useState(false);
-  const pauseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const updateMotionPreference = () => setMotionEnabled(!mediaQuery.matches);
-
-    updateMotionPreference();
-    mediaQuery.addEventListener('change', updateMotionPreference);
-
-    return () => mediaQuery.removeEventListener('change', updateMotionPreference);
-  }, []);
-
-  useEffect(() => {
-    if (!motionEnabled) {
-      return;
-    }
-
-    const currentPhrase = phrases[phraseIndex];
-
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        if (charIndex < currentPhrase.length) {
-          setDisplayText(currentPhrase.substring(0, charIndex + 1));
-          setCharIndex(charIndex + 1);
-        } else {
-          pauseTimeoutRef.current = setTimeout(() => setIsDeleting(true), 1800);
-        }
-      } else if (charIndex > 0) {
-        setDisplayText(currentPhrase.substring(0, charIndex - 1));
-        setCharIndex(charIndex - 1);
-      } else {
-        setIsDeleting(false);
-        setPhraseIndex((prev) => (prev + 1) % phrases.length);
-      }
-    }, isDeleting ? 45 : 90);
-
-    return () => {
-      clearTimeout(timeout);
-      if (pauseTimeoutRef.current) {
-        clearTimeout(pauseTimeoutRef.current);
-        pauseTimeoutRef.current = null;
-      }
-    };
-  }, [charIndex, isDeleting, motionEnabled, phraseIndex]);
-
   const githubLink = socialLinks.find((link) => link.label === 'GitHub');
   const linkedInLink = socialLinks.find((link) => link.label === 'LinkedIn');
 
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative flex min-h-[min(78vh,720px)] items-center overflow-hidden py-20 sm:py-28"
+      className="relative overflow-hidden pb-20 pt-16 sm:pb-28 sm:pt-24"
     >
       <div
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_color-mix(in_srgb,var(--accent)_12%,transparent),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,var(--accent-glow),transparent_60%)]"
         aria-hidden="true"
       />
-      <div className="section-container-narrow text-center">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--muted)] sm:text-sm">
-          Developer & Systems Engineer
+      <div className="section-container">
+        <p className="eyebrow hero-enter" style={{ '--i': 0 } as React.CSSProperties}>
+          {siteConfig.role} <span className="text-accent">·</span> {siteConfig.location}
         </p>
         <h1
           id="hero-heading"
-          className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
+          className="hero-enter mt-6 font-serif text-step-5 leading-[0.92] tracking-display"
+          style={{ '--i': 1 } as React.CSSProperties}
         >
           {siteConfig.name}
+          <span className="text-accent" aria-hidden="true">
+            .
+          </span>
         </h1>
-        <p
-          className="mt-4 min-h-[2rem] text-lg font-medium text-[var(--accent)] sm:text-xl"
-          aria-live={motionEnabled ? 'polite' : undefined}
+        <div
+          className="hero-enter mt-8 max-w-2xl"
+          style={{ '--i': 2 } as React.CSSProperties}
         >
-          {motionEnabled ? (
-            <span className="typewriter-cursor">{displayText}</span>
-          ) : (
-            staticTagline
-          )}
-        </p>
-        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[var(--muted)] sm:text-lg">
-          {siteConfig.description}
-        </p>
+          <p className="font-serif text-step-2 leading-snug text-ink">{tagline}</p>
+          <p className="mt-4 text-step-0 leading-relaxed text-ink-2">{siteConfig.description}</p>
+        </div>
 
-        <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-          <a href="#projects" className="btn-primary w-full sm:w-auto">
+        <div
+          className="hero-enter mt-10 flex flex-col gap-3 sm:flex-row sm:items-center"
+          style={{ '--i': 3 } as React.CSSProperties}
+        >
+          <a href="#projects" className="btn-primary">
             View Projects
           </a>
-          <a href="#contact" className="btn-secondary w-full sm:w-auto">
+          <a href="#contact" className="btn-secondary">
             Contact Me
           </a>
+          <a href={siteConfig.resumePath} download className="btn-secondary">
+            <Download className="h-4 w-4" aria-hidden="true" />
+            Resume
+          </a>
+          <div className="flex items-center gap-1 sm:ml-3">
+            {githubLink ? (
+              <a
+                href={githubLink.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="focus-ring pressable rounded-full p-2.5 text-ink-2 transition-colors hover:text-ink"
+              >
+                <Github className="h-5 w-5" aria-hidden="true" />
+              </a>
+            ) : null}
+            {linkedInLink ? (
+              <a
+                href={linkedInLink.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="focus-ring pressable rounded-full p-2.5 text-ink-2 transition-colors hover:text-ink"
+              >
+                <Linkedin className="h-5 w-5" aria-hidden="true" />
+              </a>
+            ) : null}
+          </div>
         </div>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-          {githubLink ? (
-            <a
-              href={githubLink.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="focus-ring inline-flex items-center gap-2 rounded-md px-2 py-1 text-sm font-medium text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
-            >
-              <Github className="h-4 w-4" aria-hidden="true" />
-              GitHub
-            </a>
-          ) : null}
-          {linkedInLink ? (
-            <a
-              href={linkedInLink.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="focus-ring inline-flex items-center gap-2 rounded-md px-2 py-1 text-sm font-medium text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
-            >
-              <Linkedin className="h-4 w-4" aria-hidden="true" />
-              LinkedIn
-            </a>
-          ) : null}
-        </div>
+        <dl
+          className="hero-enter mt-16 grid grid-cols-3 gap-4 border-t border-rim pt-8 sm:max-w-xl"
+          style={{ '--i': 4 } as React.CSSProperties}
+        >
+          {heroStats.map((stat) => (
+            <div key={stat.label} className="flex flex-col">
+              <dt className="eyebrow order-2 mt-2">{stat.label}</dt>
+              <dd className="order-1 font-serif text-step-3 leading-none">{stat.value}</dd>
+            </div>
+          ))}
+        </dl>
 
         <a
           href="#about"
-          className="focus-ring mt-14 inline-flex items-center gap-2 text-sm font-medium text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
+          className="focus-ring eyebrow mt-16 inline-flex items-center gap-2 rounded-sm transition-colors hover:text-ink"
         >
-          Learn more
-          <ArrowDown className="h-4 w-4" aria-hidden="true" />
+          Scroll
+          <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
         </a>
       </div>
     </section>

@@ -1,8 +1,10 @@
 export const navItems = [
-  { label: 'Home', href: '#top' },
   { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },
+  { label: 'Education', href: '#education' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Homelab', href: '#homelab' },
   { label: 'Contact', href: '#contact' },
 ] as const;
 
@@ -27,9 +29,12 @@ export const socialLinks = [
 
 export const siteConfig = {
   name: 'Corey Bui',
-  title: 'Corey Bui | Developer & Systems Engineer',
+  title: 'Corey Bui | Software Engineer',
+  role: 'Software Engineer',
+  location: 'Austin, TX',
   description:
-    'I build modern web experiences and automation tools that bridge backend infrastructure with engaging frontends.',
+    'Software engineer building distributed data-platform services and cloud applications in Java, Python, and JavaScript.',
   url: 'https://coreybui.com',
-  email: 'corbui317@gmail.com',
+  email: 'corbui31796@gmail.com',
+  resumePath: '/Bui_Resume_SWE_GM_Oct2026.docx',
 } as const;

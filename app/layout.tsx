@@ -1,21 +1,33 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { DM_Sans, DM_Serif_Display, IBM_Plex_Mono } from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { siteConfig } from '@/data/navigation';
 import { serializeJsonLd } from '@/lib/serializeJsonLd';
 import './globals.css';
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-dm-sans',
+});
+
+const dmSerif = DM_Serif_Display({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-dm-serif',
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-ibm-mono',
 });
 
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#fafafa' },
-    { media: '(prefers-color-scheme: dark)', color: '#0b1120' },
+    { media: '(prefers-color-scheme: light)', color: '#f9f6f1' },
+    { media: '(prefers-color-scheme: dark)', color: '#100e0c' },
   ],
 };
 
@@ -81,7 +93,9 @@ const personSchema = {
   name: siteConfig.name,
   url: siteConfig.url,
   email: siteConfig.email,
-  jobTitle: 'Developer & Systems Engineer',
+  jobTitle: siteConfig.role,
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'Wayne State University' },
+  address: { '@type': 'PostalAddress', addressLocality: 'Austin', addressRegion: 'TX' },
   sameAs: [
     'https://github.com/corbui317',
     'https://www.linkedin.com/in/corey-bui/',
@@ -97,7 +111,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body
+        className={`${dmSans.variable} ${dmSerif.variable} ${plexMono.variable} font-sans antialiased`}
+      >
         <a href="#main" className="skip-link">
           Skip to main content
         </a>

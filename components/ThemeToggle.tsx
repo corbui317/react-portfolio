@@ -34,7 +34,7 @@ export function ThemeToggle({ className = '' }: ThemeToggleProps) {
     <button
       type="button"
       onClick={toggleTheme}
-      className={`focus-ring rounded-lg bg-[var(--surface-muted)] p-2 transition-colors hover:bg-[var(--card-border)] ${className}`.trim()}
+      className={`focus-ring pressable rounded-full p-2 text-ink-2 transition-colors hover:text-ink ${className}`.trim()}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {isDark ? <Sun className="h-5 w-5" aria-hidden="true" /> : <Moon className="h-5 w-5" aria-hidden="true" />}

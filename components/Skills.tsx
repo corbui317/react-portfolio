@@ -7,14 +7,19 @@ export function Skills() {
     <FadeInSection id="skills">
       <div className="section-container">
         <SectionHeading
-          title="Skills & Focus"
-          subtitle="A practical mix of frontend craft, systems engineering, and cloud operations."
+          index="03"
+          label="Skills"
+          title="Technical Expertise"
+          subtitle="Backend and data-platform depth, with the frontend and ops range to ship end to end."
         />
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-          {skillGroups.map((group) => (
-            <article key={group.title} className="surface-card p-6">
-              <h3 className="text-lg font-semibold">{group.title}</h3>
-              <ul className="mt-4 flex flex-wrap gap-2">
+        <div className="grid grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-2">
+          {skillGroups.map((group, index) => (
+            <article key={group.title} className="border-t border-rim pt-6" data-reveal>
+              <p className="eyebrow">
+                <span className="text-accent">{String(index + 1).padStart(2, '0')}</span>
+              </p>
+              <h3 className="mt-2 font-serif text-step-2">{group.title}</h3>
+              <ul className="mt-5 flex flex-wrap gap-2">
                 {group.skills.map((skill) => (
                   <li key={skill}>
                     <span className="tag-pill">{skill}</span>

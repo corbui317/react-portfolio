@@ -1,50 +1,40 @@
 import { FadeInSection } from '@/components/FadeInSection';
 import { SectionHeading } from '@/components/SectionHeading';
-
-const highlights = [
-  {
-    title: 'Systems & automation',
-    body: 'Docker, Linux, Node.js, and cloud workflows that stay maintainable as projects grow.',
-  },
-  {
-    title: 'Frontend craft',
-    body: 'React and Next.js experiences that are responsive, accessible, and fast on Vercel.',
-  },
-  {
-    title: 'Beyond the screen',
-    body: 'Movies, cooking, piano, guitar, trumpet, and homelab tinkering keep curiosity alive.',
-  },
-];
+import { aboutStats } from '@/data/stats';
 
 export function About() {
   return (
     <FadeInSection id="about">
-      <div className="section-container-narrow">
+      <div className="section-container">
         <SectionHeading
+          index="01"
+          label="About"
           title="About Me"
-          subtitle="Systems-minded developer focused on clarity, reliability, and clean user experiences."
+          subtitle="Systems-minded engineer focused on clarity, reliability, and clean user experiences."
         />
-        <div className="surface-card space-y-8 p-8 sm:p-10">
-          <p className="text-base leading-relaxed text-[var(--muted)] sm:text-lg">
-            I&apos;m a systems engineer and web developer who enjoys simplifying complexity.
-            I build products that feel polished on the surface while staying dependable
-            underneath.
-          </p>
-          <ul className="grid gap-5 sm:grid-cols-3 sm:gap-4">
-            {highlights.map((item) => (
-              <li
-                key={item.title}
-                className="rounded-xl border border-[var(--card-border)] bg-[var(--surface-muted)] p-4"
-              >
-                <h3 className="text-sm font-semibold text-[var(--foreground)]">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
-                  {item.body}
-                </p>
-              </li>
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+          <div className="space-y-5 text-step-0 leading-relaxed text-ink-2" data-reveal>
+            <p>
+              I&apos;m a software engineer with 4+ years building distributed data-platform
+              services and cloud applications in Java, Python, and JavaScript. Today I lead Java
+              development for data-platform services on Meta&apos;s global infrastructure,
+              including a Presto connector that lets teams query Kafka topics in plain SQL.
+            </p>
+            <p>
+              Before that I automated provisioning and access for 10k+ users, built FAA-compliant
+              aerospace services, and worked on radar simulation tools for the U.S. Air Force.
+              Outside work I run a self-hosted homelab and enjoy movies, cooking, piano, guitar,
+              and trumpet.
+            </p>
+          </div>
+          <dl className="grid grid-cols-2 gap-px self-start overflow-hidden rounded-xl border border-rim bg-rim">
+            {aboutStats.map((stat) => (
+              <div key={stat.label} className="flex flex-col bg-elevated p-6" data-reveal>
+                <dt className="eyebrow order-2 mt-3">{stat.label}</dt>
+                <dd className="order-1 font-serif text-step-4 leading-none">{stat.value}</dd>
+              </div>
             ))}
-          </ul>
+          </dl>
         </div>
       </div>
     </FadeInSection>
