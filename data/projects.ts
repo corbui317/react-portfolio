@@ -5,6 +5,7 @@ export interface Project {
   outcome: string;
   tags: string[];
   preview?: string;
+  featured?: boolean;
 }
 
 export const projects: Project[] = [
@@ -19,9 +20,17 @@ export const projects: Project[] = [
   {
     title: 'Decidarr',
     url: 'https://github.com/corbui317/decidarr',
-    description: 'Plex movie roulette that randomly picks movies or TV shows from your libraries.',
+    featured: true,
+    description: 'Movie-roulette app that selects titles from Plex libraries.',
     outcome: 'Built a self-hosted app with Plex, Tautulli, and TMDb integrations and themed slot-machine UI.',
-    tags: ['Next.js', 'Plex', 'Open Source'],
+    tags: ['Next.js 14', 'MongoDB', 'Plex'],
+  },
+  {
+    title: 'HomeVault',
+    url: 'https://home-vault.me',
+    description: 'Full-stack MERN photo library with Firebase auth and JWT login.',
+    outcome: 'Deployed with Docker behind an Nginx reverse proxy on self-hosted infrastructure.',
+    tags: ['MERN', 'Firebase', 'Docker'],
   },
   {
     title: 'Soleil Nail Lounge',

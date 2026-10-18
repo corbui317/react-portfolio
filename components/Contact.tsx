@@ -1,31 +1,57 @@
-import { Mail } from 'lucide-react';
+import { ArrowUpRight, Mail, MapPin } from 'lucide-react';
 import { FadeInSection } from '@/components/FadeInSection';
-import { SectionHeading } from '@/components/SectionHeading';
-import { siteConfig } from '@/data/navigation';
+import { siteConfig, socialLinks } from '@/data/navigation';
+
+const profileLinks = socialLinks.filter(
+  (link) => link.label === 'GitHub' || link.label === 'LinkedIn'
+);
 
 export function Contact() {
   return (
     <FadeInSection id="contact">
-      <div className="section-container-narrow">
-        <SectionHeading
-          title="Contact"
-          subtitle="Open to collaboration, freelance work, and interesting engineering challenges."
-        />
-        <div className="surface-card p-8 text-center sm:p-10">
-          <p className="mx-auto max-w-lg text-base leading-relaxed text-[var(--muted)]">
-            Want to collaborate, discuss a project, or just say hi? I&apos;d love to hear
-            from you.
+      <div className="section-container">
+        <div className="border-t border-rim pt-16 sm:pt-20">
+          <p className="eyebrow" data-reveal>
+            <span className="text-accent">07</span> / Contact
           </p>
-          <a
-            href={`mailto:${siteConfig.email}`}
-            className="btn-primary mt-8 w-full sm:w-auto"
-            aria-label={`Email ${siteConfig.name} at ${siteConfig.email}`}
+          <h2
+            className="mt-4 max-w-3xl font-serif text-step-4 leading-[1.05] tracking-display"
+            data-reveal
           >
-            <Mail className="h-5 w-5" aria-hidden="true" />
-            {siteConfig.email}
-          </a>
-          <p className="mt-4 text-sm text-[var(--muted)]">
-            Typically responds within 1–2 business days.
+            Contact
+            <span className="block text-ink-3">Let&apos;s build something reliable.</span>
+          </h2>
+          <p className="mt-6 max-w-xl leading-relaxed text-ink-2" data-reveal>
+            Open to collaboration, freelance work, and interesting engineering challenges.
+            I typically respond within 1–2 business days.
+          </p>
+
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center" data-reveal>
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className="btn-primary"
+              aria-label={`Email ${siteConfig.name} at ${siteConfig.email}`}
+            >
+              <Mail className="h-4 w-4" aria-hidden="true" />
+              {siteConfig.email}
+            </a>
+            {profileLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary"
+              >
+                {link.label}
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+            ))}
+          </div>
+
+          <p className="mt-8 inline-flex items-center gap-2 font-mono text-sm text-ink-3" data-reveal>
+            <MapPin className="h-4 w-4" aria-hidden="true" />
+            {siteConfig.location}
           </p>
         </div>
       </div>

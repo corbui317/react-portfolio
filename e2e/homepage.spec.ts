@@ -10,10 +10,44 @@ test.describe('Homepage', () => {
     await page.goto('/');
 
     await expect(page.getByRole('heading', { name: 'Corey Bui', level: 1 })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'About Me' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Skills & Focus' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Featured Projects' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Contact' })).toBeVisible();
+    for (const name of [
+      'About Me',
+      'Career Timeline',
+      'Technical Expertise',
+      'Education & Credentials',
+      'Featured Projects',
+      'Personal Infrastructure',
+      'Contact',
+    ]) {
+      const heading = page.getByRole('heading', { name, level: 2 });
+      await heading.scrollIntoViewIfNeeded();
+      await expect(heading).toBeVisible();
+    }
+  });
+
+  test('nav highlights the section in view', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('/');
+
+    const desktopNav = page.getByRole('navigation', { name: 'Primary' });
+    await desktopNav.getByRole('link', { name: 'Education' }).click();
+
+    await expect(desktopNav.getByRole('link', { name: 'Education' })).toHaveAttribute(
+      'aria-current',
+      'true'
+    );
+  });
+
+  test('experience highlights expand and collapse', async ({ page }) => {
+    await page.goto('/');
+
+    const toggle = page.locator('#experience').getByRole('button', { name: /Show all/ }).first();
+    await toggle.scrollIntoViewIfNeeded();
+    await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    await toggle.click();
+    await expect(
+      page.locator('#experience').getByRole('button', { name: 'Show less' })
+    ).toHaveAttribute('aria-expanded', 'true');
   });
 
   test('skip link focuses main content', async ({ page }) => {
@@ -84,12 +118,18 @@ test.describe('Homepage', () => {
     );
   });
 
-  test('reduced motion shows static hero tagline', async ({ page }) => {
+  test('reduced motion shows hero tagline and sections without movement', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto('/');
 
     await expect(page.getByText(staticHeroTagline)).toBeVisible();
-    await expect(page.locator('.typewriter-cursor')).toHaveCount(0);
+    await expect(page.locator('#about')).toHaveClass(/visible/);
+
+    const revealTransform = await page
+      .locator('#about [data-reveal]')
+      .first()
+      .evaluate((element) => getComputedStyle(element).transform);
+    expect(revealTransform).toBe('none');
   });
 
   test('contact mailto uses siteConfig email', async ({ page }) => {

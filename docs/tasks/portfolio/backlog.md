@@ -378,3 +378,18 @@ Plans: [docs/tasks/portfolio/plans/PORT-05-*-context-pack.md](./plans/)
 - **Verification:** full CI suite, Vercel build logs, post-deploy smoke check
 - **Completed (local):** 2026-06-26 — typecheck, lint, test, build, e2e:ci all pass
 - **Completed (deploy):** 2026-06-26 — CI run 28247175604 success; Vercel deployment H5BTseU6cFdYdxVSUx5r2FgMiDWN success
+
+### PORT-07-WEB-01 — Editorial redesign and resume sections
+
+- **Spec:** [05-editorial-redesign.md](../../specs/portfolio/05-editorial-redesign.md)
+- **Dependencies:** PORT-06-DEPLOY-01
+- **Files:** `app/globals.css`, `app/layout.tsx`, `app/page.tsx`, `tailwind.config.ts`, `components/*`, `hooks/useFadeIn.ts`, `hooks/useActiveSection.ts`, `data/*`, `e2e/*`
+- **Scope:** Design tokens and fonts, staggered reveals, active-section nav, Experience/Education/Homelab sections, stats, restyled existing sections, tests
+- **Excluded:** Framer Motion, resume PDF download, phone number
+- **Acceptance criteria:**
+  - [x] Light and dark palettes match spec tokens
+  - [x] Nav highlights the section in view (`aria-current`)
+  - [x] Experience, Education, Homelab, and stats render from `data/`
+  - [x] Reduced motion removes translate/scale motion
+  - [x] typecheck, lint, test, build, e2e:ci pass
+- **Verification:** unit + E2E + manual browser check (light/dark, desktop/mobile)

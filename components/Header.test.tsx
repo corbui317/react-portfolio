@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
+import { navItems } from '@/data/navigation';
 import { Header } from './Header';
 
 vi.mock('@/components/ThemeToggle', () => ({
@@ -12,11 +13,9 @@ describe('Header', () => {
     render(<Header />);
 
     expect(screen.getByRole('navigation', { name: 'Primary' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Home' })).toHaveAttribute('href', '#top');
-    expect(screen.getByRole('link', { name: 'About' })).toHaveAttribute('href', '#about');
-    expect(screen.getByRole('link', { name: 'Skills' })).toHaveAttribute('href', '#skills');
-    expect(screen.getByRole('link', { name: 'Projects' })).toHaveAttribute('href', '#projects');
-    expect(screen.getByRole('link', { name: 'Contact' })).toHaveAttribute('href', '#contact');
+    for (const item of navItems) {
+      expect(screen.getByRole('link', { name: item.label })).toHaveAttribute('href', item.href);
+    }
   });
 
   it('toggles mobile menu aria-expanded', async () => {

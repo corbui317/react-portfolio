@@ -1,23 +1,30 @@
 interface SectionHeadingProps {
   title: string;
   subtitle?: string;
+  index?: string;
+  label?: string;
   align?: 'left' | 'center';
 }
 
 export function SectionHeading({
   title,
   subtitle,
-  align = 'center',
+  index,
+  label,
+  align = 'left',
 }: SectionHeadingProps) {
   const alignment = align === 'center' ? 'text-center mx-auto' : 'text-left';
 
   return (
-    <div className={`mb-10 sm:mb-12 max-w-2xl ${alignment}`}>
-      <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">{title}</h2>
-      {subtitle ? (
-        <p className="mt-3 text-base sm:text-lg text-[var(--muted)] leading-relaxed">
-          {subtitle}
+    <div className={`mb-12 max-w-2xl sm:mb-16 ${alignment}`} data-reveal>
+      {index && label ? (
+        <p className="eyebrow mb-4">
+          <span className="text-accent">{index}</span> / {label}
         </p>
+      ) : null}
+      <h2 className="font-serif text-step-4 leading-[1.05] tracking-display">{title}</h2>
+      {subtitle ? (
+        <p className="mt-4 text-step-0 leading-relaxed text-ink-2">{subtitle}</p>
       ) : null}
     </div>
   );

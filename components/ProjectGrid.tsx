@@ -8,13 +8,15 @@ export function ProjectGrid() {
     <FadeInSection id="projects">
       <div className="section-container">
         <SectionHeading
+          index="05"
+          label="Projects"
           title="Featured Projects"
           subtitle="Selected work spanning self-hosted platforms, business sites, and personal builds."
         />
-        <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <li key={project.title} className="h-full">
-              <ProjectCard project={project} />
+        <ul className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {projects.map((project, index) => (
+            <li key={project.title} className="h-full" data-reveal>
+              <ProjectCard project={project} index={index + 1} />
             </li>
           ))}
         </ul>

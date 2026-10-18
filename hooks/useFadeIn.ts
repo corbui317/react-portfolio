@@ -11,8 +11,13 @@ export function useFadeIn<T extends HTMLElement>() {
       return;
     }
 
+    // Index children marked data-reveal so CSS can stagger them via --i
+    element.querySelectorAll<HTMLElement>('[data-reveal]').forEach((child, index) => {
+      child.style.setProperty('--i', String(index));
+    });
+
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
+    if (prefersReducedMotion || typeof IntersectionObserver === 'undefined') {
       element.classList.add('visible');
       return;
     }

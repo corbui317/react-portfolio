@@ -10,9 +10,9 @@ const iconMap = {
 
 export function Footer() {
   return (
-    <footer className="mt-8 border-t border-[var(--card-border)] px-4 py-12">
-      <div className="section-container">
-        <nav className="mb-8 flex flex-wrap justify-center gap-6" aria-label="Footer">
+    <footer className="mt-8 border-t border-rim py-12">
+      <div className="section-container flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+        <nav className="flex flex-wrap gap-x-6 gap-y-3" aria-label="Footer">
           {navItems.map((item) => (
             <a key={item.href} href={item.href} className="nav-link">
               {item.label}
@@ -20,7 +20,7 @@ export function Footer() {
           ))}
         </nav>
 
-        <div className="mb-8 flex justify-center gap-4">
+        <div className="flex gap-1">
           {socialLinks.map((link) => {
             const Icon = iconMap[link.label];
             return (
@@ -30,18 +30,17 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={link.label}
-                className="focus-ring rounded-md p-2 text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
+                className="focus-ring pressable rounded-full p-2 text-ink-3 transition-colors hover:text-ink"
               >
                 <Icon className="h-5 w-5" aria-hidden="true" />
               </a>
             );
           })}
         </div>
-
-        <p className="text-center text-sm text-[var(--muted)]">
-          &copy; {new Date().getFullYear()} {siteConfig.name} — Built with Next.js
-        </p>
       </div>
+      <p className="section-container mt-8 font-mono text-xs text-ink-3">
+        &copy; {new Date().getFullYear()} {siteConfig.name} — Built with Next.js
+      </p>
     </footer>
   );
 }
